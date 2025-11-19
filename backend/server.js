@@ -4,8 +4,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 
-app.use(cors({ origin: 'https://vercel.com/nishant-jhas-projects-54810ab6/promos/4eJGNJkQEk5iHvYhEEgj2WQ1DFhU' }));
-
 
 // routes (keep file paths same as in project)
 const authRoutes = require('./routes/auth');
