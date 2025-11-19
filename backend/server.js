@@ -6,10 +6,8 @@ const cors = require('cors');
 
 
 // routes (keep file paths same as in project)
-app.use('/api/auth', authRoutes);
-app.use('/api/promoters', promoterRoutes);
-app.use('/api/promos', promoRoutes);
-
+const authRoutes = require('./routes/auth');
+const promoRoutes = require('./routes/promos');
 
 const app = express();           // <-- create app BEFORE connecting to Mongo
 app.use(cors());
