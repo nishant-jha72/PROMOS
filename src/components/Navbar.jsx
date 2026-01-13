@@ -1,60 +1,79 @@
 import { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { useTheme } from "../context/ThemeContext";
+import { NavLink } from "react-router-dom";
 import logo from "../assets/logo.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showNavbar, setShowNavbar] = useState(true);
   const lastScrollY = useRef(0);
+  const { theme, toggleTheme } = useTheme();
 
+
+  // Hide / Show navbar on scroll
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
+      const current = window.scrollY;
 
-      if (currentScrollY > lastScrollY.current && currentScrollY > 80) {
-        // scrolling down
+      if (current > lastScrollY.current && current > 80) {
         setShowNavbar(false);
-        setIsOpen(false); // close mobile menu
+        setIsOpen(false);
       } else {
-        // scrolling up
         setShowNavbar(true);
       }
 
-      lastScrollY.current = currentScrollY;
+      lastScrollY.current = current;
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const navItemClass = ({ isActive }) =>
+    `transition font-medium ${
+      isActive
+        ? "text-blue-600 border-b-2 border-blue-600"
+        : "text-gray-700 hover:text-blue-600"
+    }`;
+
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-50 bg-white backdrop-blur shadow-sm
-      transition-transform duration-300
+      className={`fixed top-0 left-0 w-full z-50 shadow-sm backdrop-blur
+      transition-transform duration-300 bg-white
       ${showNavbar ? "translate-y-0" : "-translate-y-full"}`}
     >
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div className="max-w-10xl mx-auto px-6 py-4 flex items-center justify-between">
 
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2">
-          <img src={logo} alt="Logo" className="h-12 w-12" />
+        <NavLink to="/" className="flex items-center gap-2">
+          <img src={logo} alt="Promos Logo" className="h-20 w-20" />
           <span className="text-xl font-bold text-gray-800">
-            Promos : Meet Your Customer
+            Promos 
           </span>
-        </Link>
+        </NavLink>
 
         {/* Desktop Menu */}
-        <ul className="hidden md:flex items-center gap-8 font-medium text-gray-700">
-          <li className="hover:text-blue-600 transition"><Link to="/docs">Docs</Link></li>
-          <li className="hover:text-blue-600 transition"><Link to="/blogs">Blogs</Link></li>
-          <li className="hover:text-blue-600 transition"><Link to="/services">Services</Link></li>
-          <li className="hover:text-blue-600 transition"><Link to="/careers">Careers</Link></li>
-          <li className="hover:text-blue-600 transition"><Link to="/contact">Contact Us</Link></li>
+        <ul className="hidden md:flex items-end gap-8 ">
+          <NavLink to="/docs" className={navItemClass}>Docs</NavLink>
+          <NavLink to="/blogs" className={navItemClass}>Blogs</NavLink>
+          <NavLink to="/services" className={navItemClass}>Services</NavLink>
+          <NavLink to="/Github" className={navItemClass}>Github</NavLink>
+          <NavLink to="/careers" className={navItemClass}>Careers</NavLink>
+          <NavLink to="/contact" className={navItemClass}>Contact</NavLink>
+          <button
+  onClick={toggleTheme}
+  className="ml-4 p-2 rounded-full bg-gray-200 dark:bg-gray-700
+             text-gray-800 dark:text-gray-200 transition"
+  title="Toggle Theme"
+>
+  {theme === "light" ? "🌙" : "☀️"}
+</button>
+
         </ul>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile Button */}
         <button
-          className="md:hidden text-gray-700"
+          className="md:hidden text-2xl text-gray-700"
           onClick={() => setIsOpen(!isOpen)}
         >
           ☰
@@ -63,13 +82,14 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-white shadow-lg">
-          <ul className="flex flex-col px-6 py-4 gap-4 text-gray-700 font-medium">
-            <Link to="/docs" onClick={() => setIsOpen(false)}>Docs</Link>
-            <Link to="/blogs" onClick={() => setIsOpen(false)}>Blogs</Link>
-            <Link to="/services" onClick={() => setIsOpen(false)}>Services</Link>
-            <Link to="/careers" onClick={() => setIsOpen(false)}>Careers</Link>
-            <Link to="/contact" onClick={() => setIsOpen(false)}>Contact Us</Link>
+        <div className="md:hidden bg-white border-t shadow-md">
+          <ul className="flex flex-col px-6 py-4 gap-4">
+            <NavLink to="/docs" onClick={() => setIsOpen(false)} className={navItemClass}>Docs</NavLink>
+            <NavLink to="/blogs" onClick={() => setIsOpen(false)} className={navItemClass}>Blogs</NavLink>
+            <NavLink to="/services" onClick={() => setIsOpen(false)} className={navItemClass}>Services</NavLink>
+            <NavLink to="/Github" onClick={() => setIsOpen(false)} className={navItemClass}>Github</NavLink>
+            <NavLink to="/careers" onClick={() => setIsOpen(false)} className={navItemClass}>Careers</NavLink>
+            <NavLink to="/contact" onClick={() => setIsOpen(false)} className={navItemClass}>Contact</NavLink>
           </ul>
         </div>
       )}

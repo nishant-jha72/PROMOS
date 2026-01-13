@@ -25,7 +25,7 @@ const Services = () => {
       description: "Promoting with influencers leverages authentic voices to expand reach and build trust rapidly. This strategy excels in niche targeting and higher engagement rates compared to traditional ads, ideal for full-stack developers showcasing portfolio projects.",
       process: "Targeted Reach → Cost-Effective Growth → Enhanced Engagement → Gain Actual Audience",
       image: inf,
-    link: "/services/web",
+      link: "/services/web",
     },
     {
       title: "Promote By Specific Type APPS",

@@ -23,7 +23,7 @@ const Hero = () => {
               Your One Stop Solution For Customers
             </h3>
 
-            <p className="text-gray-700 leading-relaxed">
+            <p className="text-gray-700 leading-relaxed text-xl" >
               Gain real customers for your business. Our team is dedicated
               to providing you with customers who are genuinely interested
               in your product.
