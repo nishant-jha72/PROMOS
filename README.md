@@ -138,6 +138,84 @@ responsiveness, and user experience.
 - Deployment & optimization
 
 ---
+# 🟦 Day 3 – Advanced UI Features, API Integration & Global State
+
+Day 3 focused on improving the overall user experience, adding real-world
+functionality, and making the application more production-ready by introducing
+API integration, global theming, and better navigation behavior.
+
+---
+
+### 1. Navbar Redesign & UX Improvements
+- Redesigned the Navbar with a modern, responsive layout
+- Implemented active route highlighting using `NavLink`
+- Ensured the current page is clearly marked in the Navbar
+- Improved mobile navigation behavior and usability
+- Maintained hide-on-scroll functionality for better screen focus
+
+---
+
+### 2. Global Layout Architecture
+- Introduced a `Layout` component using `Outlet`
+- Ensured Navbar and Footer are displayed on every page
+- Centralized page structure for cleaner routing and scalability
+- Prevented UI duplication across routes
+
+---
+
+### 3. Theme Toggle (Light / Dark Mode)
+- Implemented a global theme system using React Context
+- Enabled Tailwind CSS class-based dark mode
+- Added a theme toggle button in the Navbar
+- Applied theme changes across all pages and components
+- Persisted user theme preference using `localStorage`
+
+---
+
+### 4. GitHub API Integration
+- Created a reusable GitHub Profile component
+- Integrated GitHub public API to fetch:
+  - Profile picture
+  - Username and name
+  - Bio
+  - Followers, following, and public repositories
+- Added a direct link to the GitHub profile
+- Implemented loading and error states for better UX
+- Included a centered header within the same component
+
+---
+
+### 5. Layout Conflict Resolution
+- Fixed content overlap issues caused by the fixed Navbar
+- Standardized page spacing using top padding (`pt-28`)
+- Introduced a reusable page-wrapper pattern for consistency
+- Ensured all pages render correctly below the Navbar
+
+---
+
+### 6. Careers Page UX Handling
+- Implemented a “Coming Soon” Careers page
+- Added user feedback via alert when clicking the Careers link
+- Ensured route safety even for incomplete sections
+
+---
+
+### 7. Code Quality & Best Practices
+- Removed fixed heights that caused layout issues
+- Followed section-based layout instead of absolute positioning
+- Improved component reusability and readability
+- Ensured mobile-first responsive design across all new features
+
+---
+
+## ✅ Outcome of Day 3
+
+By the end of Day 3, Promos evolved from a static frontend into a more dynamic,
+real-world-ready application with global state management, API integration,
+improved navigation, and better user experience.
+
+The project is now well-prepared for backend integration and future scalability.
+
 
 ## 📌 Conclusion
 
