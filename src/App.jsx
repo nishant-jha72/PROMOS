@@ -8,7 +8,8 @@ import Services from "./components/Services_new";
 import Careers from "./pages/Carrears";
 import Contact from "./components/Contact";
 import Github from "./pages/Github";
-
+import Login from "./components/Login";
+import Signup from "./components/Signup";
 const App = () => {
   return (
     <Router>
@@ -22,6 +23,8 @@ const App = () => {
           <Route path="/careers" element={<Careers />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/Github" element={<Github />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
         </Route>
       </Routes>
     </Router>
