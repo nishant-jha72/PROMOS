@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Layout from "./components/Layout"
+import Layout from "./components/Layout";
 
 import Home from "./pages/Home";
 import Docs from "./pages/Docs";
@@ -10,21 +10,21 @@ import Contact from "./components/Contact";
 import Github from "./pages/Github";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+
 const App = () => {
   return (
     <Router>
       <Routes>
-        {/* Layout wraps all pages */}
-        <Route element={<Layout />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/docs" element={<Docs />} />
-          <Route path="/blogs" element={<Blogs />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/careers" element={<Careers />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/Github" element={<Github />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="docs" element={<Docs />} />
+          <Route path="blogs" element={<Blogs />} />
+          <Route path="services" element={<Services />} />
+          <Route path="careers" element={<Careers />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="github" element={<Github />} />
+          <Route path="login" element={<Login />} />
+          <Route path="signup" element={<Signup />} />
         </Route>
       </Routes>
     </Router>
