@@ -224,24 +224,24 @@ and scalability. The frontend is intentionally designed to support future
 backend expansion without requiring major refactoring.
 
 ---
-🚀 Day : Architecture, UI Refinement & Full-Stack Roadmap
+# 🚀 Day 4 : Architecture, UI Refinement & Full-Stack Roadmap
 Overview
 Today's focus was on transforming the "Promos" landing page into a professional-grade web application. We moved beyond basic layouts to implement high-end UI components and established a clear architectural path for the upcoming backend integration.
 
-Key Build Milestones
-1. Advanced Service Carousel
+# Key Build Milestones
+# 1. Advanced Service Carousel
 Dynamic Logic: Implemented a responsive carousel that adjusts the number of visible cards based on screen size (Mobile vs. Desktop).
 
 Interactive UI: Added glassmorphism effects, background scaling on hover, and custom navigation controls using lucide-react.
 
 Auto-Play: Integrated a smart interval timer that pauses when the user hovers over a service, improving UX.
 
-2. "Meet the Developer" GitHub Integration
+# 2. "Meet the Developer" GitHub Integration
 Live Data: Built a Github.jsx component that fetches real-time profile data (Followers, Repos, Bio) from the GitHub API.
 
 Modern Styling: Created a dark-themed, premium card with a subtle blue glow and skeleton loading states to handle API latency gracefully.
 
-3. Brand Identity & SEO
+# 3. Brand Identity & SEO
 Favicon Integration: Successfully associated the "Promos" logo with the browser tab for brand consistency.
 
 Meta Optimization: Updated the index.html with Open Graph (OG) tags to ensure professional link previews when shared on LinkedIn or WhatsApp.
@@ -256,7 +256,7 @@ Lead Management: Storing contact form data in MongoDB.
 Authentication: Secure Admin access to the dashboard.
 
 Automation: Automated email responses for new inquiries.
-Live Demo :- ``` https://promos-web.netlify.app/m```
+#Live Demo :- ``` https://promos-web.netlify.app/m```
 
 ## 📧 Contact
 
@@ -271,3 +271,5 @@ the contact form on the website or By The Below Addres.
 ---
 
 © Promos – Meet Your Customer
+
+
