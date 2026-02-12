@@ -1,10 +1,43 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Target, Mail, Lock, User, ArrowLeft } from 'lucide-react';
-
+import { useState } from 'react';
 const Signup = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [name, setFullName] = useState('');
   const navigate = useNavigate();
 
+  const registerUser = async (name, email, password) => {
+    try {
+      const response = await fetch('http://localhost:8000/api/users/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name, email, password })
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Registration failed');
+      }
+
+      console.log('Registration successful:', data);
+      navigate('/login'); // Redirect to login after successful registration
+
+    } catch (error) {
+      console.error('Error during registration:', error);
+    } finally {
+      // Any cleanup if needed
+    } 
+    };
+
+    const handleRegister = async (e) => {
+      e.preventDefault();
+      await registerUser(name, email, password);
+    };
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <button 
@@ -32,7 +65,7 @@ const Signup = () => {
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-8 px-4 shadow-xl rounded-2xl sm:px-10 border border-gray-100">
-          <form className="space-y-5">
+          <form className="space-y-5" onSubmit={handleRegister}>
             <div>
               <label className="block text-sm font-medium text-gray-700">Full Name</label>
               <div className="mt-1 relative">
@@ -42,6 +75,8 @@ const Signup = () => {
                 <input
                   type="text"
                   required
+                  value={name}
+                  onChange={(e) => setFullName(e.target.value)}
                   className="appearance-none block w-full pl-10 px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                   placeholder="John Doe"
                 />
@@ -57,6 +92,8 @@ const Signup = () => {
                 <input
                   type="email"
                   required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className="appearance-none block w-full pl-10 px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                   placeholder="john@example.com"
                 />
@@ -72,6 +109,8 @@ const Signup = () => {
                 <input
                   type="password"
                   required
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   className="appearance-none block w-full pl-10 px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                   placeholder="Minimum 8 characters"
                 />
